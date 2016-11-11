@@ -31,8 +31,8 @@ function createStyleInstance (isDebug) {
   function registerFn (methodName) {
     var method = Style[methodName]
 
-    return function register (rule) {
-      var result = method.call(Style, rule)
+    return function register (rule, displayName) {
+      var result = method.call(Style, rule, displayName)
 
       if (Style.changeId !== changeId) {
         insertStyles(Style.getStyles(), {id: STYLE_ID})
