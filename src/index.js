@@ -11,13 +11,13 @@ css.keyframes = keyframes
 css.getCss = getCss
 css.STYLE_ID = constants.STYLE_ID
 
-function css (style) {
+function css (style, displayName) {
   if (!style) throw new TypeError('css style object expected')
 
   return freeStyle().registerStyle(prepareStyle(
     extend.apply(null, arguments),
     true
-  ))
+  ), displayName)
 }
 
 function unimportant (style) {
@@ -38,12 +38,12 @@ function rule (key, style) {
   ))
 }
 
-function keyframes (style) {
+function keyframes (style, displayName) {
   if (!style) throw new TypeError('css style object expected')
   return freeStyle().registerKeyframes(prepareStyle(
     extend.apply(null, arguments),
     false
-  ))
+  ), displayName)
 }
 
 function getCss () {
