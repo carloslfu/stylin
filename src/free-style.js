@@ -7,15 +7,15 @@ var styleInstance = null
 var changeId = null
 
 // One global style instance
-module.exports = function getInstance () {
+module.exports = function getInstance (isDebug) {
   if (!styleInstance) {
-    styleInstance = createStyleInstance()
+    styleInstance = createStyleInstance(isDebug)
   }
   return styleInstance
 }
 
-function createStyleInstance () {
-  var Style = FreeStyle.create()
+function createStyleInstance (isDebug) {
+  var Style = FreeStyle.create(undefined, isDebug)
 
   return {
     getStyles: getStyles,
